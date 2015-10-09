@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Wiki and Twitter Search</title>
+
+        <!-- Inlude Style Sheets -->
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'login/login.css' %}" />
+    </head>
+    <body>
+        <form action="/login/" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Login" />
+        </form>
+    </body>
+</html>
+

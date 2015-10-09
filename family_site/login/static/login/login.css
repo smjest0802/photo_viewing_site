@@ -1,0 +1,28 @@
+li {
+    list-style: none;
+}
+
+form {
+    width: 350px;
+    margin: 0 auto;
+}
+
+label {
+    width: 100px;
+    display: inline-block;
+}
+
+#id_choice {
+    margin: 0;
+    padding: 0;
+    display: inline;
+}
+
+input.which_type {
+    display: inline;
+
+}
+
+li ul li{
+    display: inline;
+}
