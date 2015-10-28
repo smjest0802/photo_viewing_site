@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Photo View</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'photos/index.css' %}" />
+    </head>
+    <body>
+        <ul class="page_header">
+            <li><a href="/photos">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Family Tree</a></li>
+            <li>
+                <a href="#">Ocassions &#9662;</a>
+                <ul class="dropdown">
+                    {% for ocassion in ocassions %}
+                        <li><a href="/photos/{{ ocassion.id }}/">{{ ocassion.linkText }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+
+
+        <ul>
+            <div class="photoGroup">
+            {% if ocassion_id %}
+                <div>{{ selected_ocassion.name }}</div>
+                <div>{{ selected_ocassion.description }}</div>
+                <div></div>
+                {% for picture in pictures %}
+                    <li>
+                        <div class="photo">
+                        <img src="{{ MEDIA_URL }}{{ picture.photo.url}}"/>
+                        </br>{{ picture.title }}
+                        </br>{{ picture.description }}
+                        </div>
+                    </li>
+                {% endfor %}
+            {% else %}
+            {% endif %}
+            </div>
+        </ul>
+    </body>
+</html>

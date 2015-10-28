@@ -13,7 +13,16 @@ from .forms import LoginForm
 def LoginView(request):
     """Handles the view for the landing page and login prompt"""
 
-    form = LoginForm()
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+
+        print "here"
+        if form.is_valid():
+            # Need to validate the login credentials, but for now just go the page
+            print "here 2"
+            return render(request, 'photo/index.html')
+    else:
+        form = LoginForm()
 
     return render(request, 'login/login.html', {'form':form.as_ul()})
 

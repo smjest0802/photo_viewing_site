@@ -19,4 +19,6 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', include('login.urls', namespace='login')),
+    url(r'^photos', include('photos.urls', namespace='photos')),
+    url(r'^media', include('photos.urls', namespace='media')),
 ]

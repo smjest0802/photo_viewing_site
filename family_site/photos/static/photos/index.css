@@ -1,0 +1,74 @@
+/* Generic Styles */
+li {
+    list-style: none;
+}
+
+/* End Generic Styles */
+
+/* Page Header */
+ul.page_header {
+    padding: 0;
+    background: #90EE90;
+}
+
+ul.page_header li {
+    display: inline-block;
+    position: relative;
+    line-height: 21px;
+    text-align: left;
+}
+
+ul.page_header li a {
+    display: block;
+    padding: 8px 25px;
+    color: #333;
+    text-decoration: none;
+}
+
+ul.page_header li a:hover {
+    color: #fff;
+    background: #939393;
+}
+
+ul.page_header li ul.dropdown {
+    min-width: 175px; /* Set width of the dropdown */
+    background: #f2f2f2;
+    display: none;
+    position: absolute;
+    z-index: 999; /* Stacking reference */
+    left: 0;
+    padding: 8px 25px 8px 0px;
+}
+
+ul.page_header li:hover ul.dropdown {
+    display: block; /* Display the dropdown */
+}
+
+ul.page_header li ul.dropdown li {
+    display: block;
+}
+
+ul.page_header li ul.dropdown li a {
+    padding-left: 5px;
+}
+
+/* End Page Header */
+
+
+img {
+    height: 300px;
+    width: 300px;
+}
+
+div.photo {
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+div.photoGroup {
+    width: 700px;
+}
+
+
+
