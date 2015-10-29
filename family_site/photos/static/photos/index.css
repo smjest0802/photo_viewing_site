@@ -8,7 +8,8 @@ li {
 /* Page Header */
 ul.page_header {
     padding: 0;
-    background: #90EE90;
+    background: #ee4b3e;
+    margin: 0;
 }
 
 ul.page_header li {
@@ -21,18 +22,18 @@ ul.page_header li {
 ul.page_header li a {
     display: block;
     padding: 8px 25px;
-    color: #333;
+    color: #1fda9a;
     text-decoration: none;
 }
 
 ul.page_header li a:hover {
-    color: #fff;
-    background: #939393;
+    color: #f2f2f3;
+    background: #e9bc1b;
 }
 
 ul.page_header li ul.dropdown {
     min-width: 175px; /* Set width of the dropdown */
-    background: #f2f2f2;
+    background: #ee4b3e;
     display: none;
     position: absolute;
     z-index: 999; /* Stacking reference */
@@ -54,6 +55,10 @@ ul.page_header li ul.dropdown li a {
 
 /* End Page Header */
 
+body {
+    background: #f5eacd;
+    margin: 0;
+}
 
 img {
     height: 300px;
@@ -64,11 +69,21 @@ div.photo {
     float: left;
     margin-right: 20px;
     margin-bottom: 20px;
+
+    border-style: groove;
+    border-radius: 15px;
+
+    padding: 5px;
+    background: #1fda9a;
 }
 
 div.photoGroup {
     width: 700px;
 }
 
-
+div#description {
+    border-style: solid none none none;
+    border-width: 1px;
+    width: 300px;
+}
 

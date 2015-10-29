@@ -10,21 +10,26 @@
         <ul class="page_header">
             <li><a href="/photos">Home</a></li>
             <li><a href="#">About</a></li>
+            <!-- Remove temporarly
             <li><a href="#">Family Tree</a></li>
+            -->
             <li>
                 <a href="#">Ocassions &#9662;</a>
                 <ul class="dropdown">
                     {% for ocassion in ocassions %}
-                        <li><a href="/photos/{{ ocassion.id }}/">{{ ocassion.linkText }}</a></li>
+                        <li><a href="/photos/{{ ocassion.id }}">{{ ocassion.linkText }}</a></li>
                     {% endfor %}
                 </ul>
             </li>
+            <!-- Remove temporarly
             <li><a href="#">Contact</a></li>
+            -->
         </ul>
 
 
         <ul>
             <div class="photoGroup">
+            <!-- Pictures for an Ocassion -->
             {% if ocassion_id %}
                 <div>{{ selected_ocassion.name }}</div>
                 <div>{{ selected_ocassion.description }}</div>
@@ -33,12 +38,29 @@
                     <li>
                         <div class="photo">
                         <img src="{{ MEDIA_URL }}{{ picture.photo.url}}"/>
-                        </br>{{ picture.title }}
-                        </br>{{ picture.description }}
+                        <div id="title">{{ picture.title }}</div>
+                        {% if picture.description %}
+                            <div id="description">{{ picture.description }}</div>
+                        {% endif %}
                         </div>
                     </li>
                 {% endfor %}
+
+            <!-- Pictures for Home page -->
             {% else %}
+                <div></div>
+                {% for picture in pictures %}
+                    <li>
+                        <div class="photo">
+                        <img src="{{ MEDIA_URL }}{{ picture.photo.url}}"/>
+                        </br><a href="/photos/{{ picture.ocassion.id }}">{{ picture.ocassion }}</a>
+                        <div id="title">{{ picture.title }}</div>
+                        {% if picture.description %}
+                            <div id="description">{{ picture.description }}</div>
+                        {% endif %}
+                        </div>
+                    </li>
+                {% endfor %}
             {% endif %}
             </div>
         </ul>

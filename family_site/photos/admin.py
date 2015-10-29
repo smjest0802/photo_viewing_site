@@ -5,7 +5,7 @@ from .models import Picture, Ocassion
 
 class PictureAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None,  {'fields': ['title', 'description']}),
+        (None,  {'fields': ['title', 'description', 'uploadDate']}),
         (None,  {'fields': ['ocassion',]}),
         ('Photo', {'fields': ['photo', 'image_tag']})
 

@@ -6,7 +6,7 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'^/(?P<ocassion_id>[0-9]+)/$', views.ocassion, name='index'),
+    url(r'^/(?P<ocassion_id>[0-9]+)$', views.ocassion, name='index'),
 ] #+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:

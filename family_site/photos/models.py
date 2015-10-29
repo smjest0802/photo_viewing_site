@@ -1,4 +1,5 @@
 from django.db import models
+import os, datetime
 
 loginChoices=[('gmail','Gmail'),
          ('facebook','Facebook'),
@@ -24,7 +25,9 @@ class Ocassion(models.Model):
     name = models.CharField('Name', max_length=100)
     description = models.CharField('Description', max_length=200)
 
-    fileLocation = models.CharField('File Location', max_length=30, blank = True) # TBD: Couldn't reference, try adding later.
+    occuredDate = models.DateTimeField('Date', default=datetime.datetime.utcnow)
+
+    fileLocation = models.CharField('File Location', max_length=30, blank = True)
 
     # Used to show text in 'admin' screens
     # TBD: Need to find a better way
@@ -32,19 +35,19 @@ class Ocassion(models.Model):
         return self.name
 
 
-# Temp location
-import os
 def get_upload_path(instance, filename):
     return os.path.join(instance.ocassion.fileLocation, filename)
 
 class Picture(models.Model):
     """Used to store the pictures"""
     title = models.CharField('Title', max_length=100)
-    description = models.CharField('Description', max_length=200)
+    description = models.CharField('Description', max_length=200, blank = True)
+
+    uploadDate = models.DateTimeField('Upload Date', default=datetime.datetime.utcnow)
 
     ocassion = models.ForeignKey(Ocassion, default=DEFAULT_OCASSION)
 
-    photo = models.ImageField(upload_to=get_upload_path, blank = True)
+    photo = models.ImageField(upload_to=get_upload_path)
 
     def image_tag(self):
         return u'<img src="%s" height="200px" width="200px"/>' % self.photo.url

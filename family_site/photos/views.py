@@ -8,7 +8,8 @@ from .models import Picture, Ocassion
 # Create your views here.
 def index(request):
 
-    pictures = Picture.objects.all()
+    # Only show the first 10 most recent photos
+    pictures = Picture.objects.order_by('-uploadDate')[:10]
     ocassions = Ocassion.objects.all()
 
     #return render(request, 'photos/index.html')
