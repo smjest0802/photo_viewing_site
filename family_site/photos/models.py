@@ -5,9 +5,10 @@ loginChoices=[('gmail','Gmail'),
          ('facebook','Facebook'),
          ('twitter', 'Twitter')]
 
-# TBD: Should not be hardcoded.
+# TBD: Should not be hardcoded. Or a better generic ocassion created.
 DEFAULT_OCASSION=1
 
+# TBD: May not use this. Need to understand Django's User configuration first.
 class User(models.Model):
     """Used to track users allowed to access the site"""
     username = models.CharField(max_length=50)
@@ -48,8 +49,10 @@ class Picture(models.Model):
     ocassion = models.ForeignKey(Ocassion, default=DEFAULT_OCASSION)
 
     photo = models.ImageField(upload_to=get_upload_path)
+    portrait = models.BooleanField('Is portrait?', default=0) # Default the fields to false
 
     def image_tag(self):
+        # TBD: Adjust so the Admin page correctly displays photo too (So there is a preview of how it will display on the site).
         return u'<img src="%s" height="200px" width="200px"/>' % self.photo.url
 
     image_tag.short_description = 'Photo'

@@ -60,9 +60,26 @@ body {
     margin: 0;
 }
 
-img {
-    height: 300px;
+/* Photo Styling */
+
+.photo div {
     width: 300px;
+}
+
+.container-portrait {
+    height: 300px;
+
+}
+
+.photo div img {
+    width: 100%;
+    height: auto;
+}
+
+img.portrait {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
 }
 
 div.photo {
@@ -75,6 +92,8 @@ div.photo {
 
     padding: 5px;
     background: #1fda9a;
+
+    /* Test */
 }
 
 div.photoGroup {
@@ -87,3 +106,5 @@ div#description {
     width: 300px;
 }
 
+
+/* End Photo Styling */

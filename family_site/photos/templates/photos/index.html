@@ -37,11 +37,21 @@
                 {% for picture in pictures %}
                     <li>
                         <div class="photo">
-                        <img src="{{ MEDIA_URL }}{{ picture.photo.url}}"/>
-                        <div id="title">{{ picture.title }}</div>
-                        {% if picture.description %}
-                            <div id="description">{{ picture.description }}</div>
-                        {% endif %}
+
+                                <!-- If the photo is portrait use the style for that -->
+                                {% if picture.portrait %}
+                                    <div class="container-portrait">
+                                    <img class="portrait" src="{{ MEDIA_URL }}{{ picture.photo.url}}"/>
+                                {% else %}
+                                    <div>
+                                    <img src="{{ MEDIA_URL }}{{ picture.photo.url}}"/>
+                                {% endif %}
+                                </div> <!-- Matching end to div.container-->
+
+                            <div id="title">{{ picture.title }}</div>
+                            {% if picture.description %}
+                                <div id="description">{{ picture.description }}</div>
+                            {% endif %}
                         </div>
                     </li>
                 {% endfor %}
@@ -52,12 +62,22 @@
                 {% for picture in pictures %}
                     <li>
                         <div class="photo">
-                        <img src="{{ MEDIA_URL }}{{ picture.photo.url}}"/>
-                        </br><a href="/photos/{{ picture.ocassion.id }}">{{ picture.ocassion }}</a>
-                        <div id="title">{{ picture.title }}</div>
-                        {% if picture.description %}
-                            <div id="description">{{ picture.description }}</div>
-                        {% endif %}
+
+                                <!-- If the photo is portrait use the style for that -->
+                                {% if picture.portrait %}
+                                    <div class="container-portrait">
+                                    <img class="portrait" src="{{ MEDIA_URL }}{{ picture.photo.url}}"/>
+                                {% else %}
+                                    <div>
+                                    <img src="{{ MEDIA_URL }}{{ picture.photo.url}}"/>
+                                {% endif %}
+                                </div> <!-- Matching end to div.container-->
+
+                            </br><a href="/photos/{{ picture.ocassion.id }}">{{ picture.ocassion }}</a>
+                            <div id="title">{{ picture.title }}</div>
+                            {% if picture.description %}
+                                <div id="description">{{ picture.description }}</div>
+                            {% endif %}
                         </div>
                     </li>
                 {% endfor %}

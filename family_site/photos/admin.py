@@ -7,7 +7,7 @@ class PictureAdmin(admin.ModelAdmin):
     fieldsets = [
         (None,  {'fields': ['title', 'description', 'uploadDate']}),
         (None,  {'fields': ['ocassion',]}),
-        ('Photo', {'fields': ['photo', 'image_tag']})
+        ('Photo', {'fields': ['photo', 'portrait', 'image_tag']})
 
     ]
 
