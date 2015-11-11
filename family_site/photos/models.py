@@ -20,6 +20,18 @@ class User(models.Model):
     createDate = models.DateTimeField()
     updateDate = models.DateTimeField()
 
+class Person(models.Model):
+    """Used to associate a person to other things"""
+
+    firstName = models.CharField('First Name', max_length=50)
+    lastName = models.CharField('Last Name', max_length=50)
+
+    mother = models.ForeignKey('self', blank = True, null = True)
+    #father = models.ForeignKey('self', blank = True)
+
+    def __unicode__(self):
+        return "%s, %s" % (self.lastName, self.firstName)
+
 class Ocassion(models.Model):
     """Used to store the occations to choose from"""
     linkText = models.CharField('Link Text', max_length=50)
@@ -35,7 +47,6 @@ class Ocassion(models.Model):
     def __unicode__(self):
         return self.name
 
-
 def get_upload_path(instance, filename):
     return os.path.join(instance.ocassion.fileLocation, filename)
 
@@ -43,6 +54,8 @@ class Picture(models.Model):
     """Used to store the pictures"""
     title = models.CharField('Title', max_length=100)
     description = models.CharField('Description', max_length=200, blank = True)
+
+    people = models.ManyToManyField(Person, blank = True)
 
     uploadDate = models.DateTimeField('Upload Date', default=datetime.datetime.utcnow)
 

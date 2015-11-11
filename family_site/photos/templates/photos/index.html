@@ -21,6 +21,15 @@
                     {% endfor %}
                 </ul>
             </li>
+            <li>
+                <a href="#">People &#9662;</a>
+                <ul class="dropdown">
+                    {% for person in people %}
+                        <li><a href="/photos/person/{{ person.id }}">{{ person.lastName }}, {{ person.firstName }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+
             <!-- Remove temporarly
             <li><a href="#">Contact</a></li>
             -->
@@ -55,10 +64,34 @@
                         </div>
                     </li>
                 {% endfor %}
+            <!-- Pictures for a person -->
+            {% elif picture_id %}
+                {% for picture in pictures %}
+                    <li>
+                        <div class="photo">
+
+                                <!-- If the photo is portrait use the style for that -->
+                                {% if picture.portrait %}
+                                    <div class="container-portrait">
+                                    <img class="portrait" src="{{ MEDIA_URL }}{{ picture.photo.url}}"/>
+                                {% else %}
+                                    <div>
+                                    <img src="{{ MEDIA_URL }}{{ picture.photo.url}}"/>
+                                {% endif %}
+                                </div> <!-- Matching end to div.container-->
+
+                            </br><a href="/photos/{{ picture.ocassion.id }}">{{ picture.ocassion }}</a>
+                            <div id="title">{{ picture.title }}</div>
+                            {% if picture.description %}
+                                <div id="description">{{ picture.description }}</div>
+                            {% endif %}
+                        </div>
+                    </li>
+                {% endfor %}
+
 
             <!-- Pictures for Home page -->
             {% else %}
-                <div></div>
                 {% for picture in pictures %}
                     <li>
                         <div class="photo">
