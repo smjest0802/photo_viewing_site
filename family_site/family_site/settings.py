@@ -107,7 +107,8 @@ USE_TZ = True
 MEDIA_ROOT = "/share/pictures_for_site/media/"
 # TBD: Make it not tied to the IP address of the machine. Or easier to change.
 #MEDIA_URL = "http://10.0.0.16:8000/media/"
-MEDIA_URL = "http://10.0.0.4:8000/media/"
+#MEDIA_URL = "http://10.0.0.4:8000/media/"
+MEDIA_URL = "http://10.0.0.11:8000/media/"
 
 STATIC_ROOT = "/share/pictures_for_site/static/"
 

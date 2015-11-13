@@ -1,6 +1,8 @@
+# All pyc files
 *.pyc
 
+# Vagrant directory
+.vagrant/
 
 # Ignoring for now
 family_site/photos/migrations/
-family_site/photos/static/photos/images/
