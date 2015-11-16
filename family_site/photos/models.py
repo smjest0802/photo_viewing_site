@@ -26,8 +26,10 @@ class Person(models.Model):
     firstName = models.CharField('First Name', max_length=50)
     lastName = models.CharField('Last Name', max_length=50)
 
-    mother = models.ForeignKey('self', blank = True, null = True)
-    #father = models.ForeignKey('self', blank = True)
+    mother = models.ForeignKey('self', blank = True, null = True, related_name="photos_persons_mother")
+    father = models.ForeignKey('self', blank = True, null = True, related_name="photos_persons_father")
+
+    profilePicture = models.ForeignKey('Picture', blank = True, null = True)
 
     def __unicode__(self):
         return "%s, %s" % (self.lastName, self.firstName)

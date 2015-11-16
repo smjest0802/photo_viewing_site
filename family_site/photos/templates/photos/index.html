@@ -22,12 +22,7 @@
                 </ul>
             </li>
             <li>
-                <a href="#">People &#9662;</a>
-                <ul class="dropdown">
-                    {% for person in people %}
-                        <li><a href="/photos/person/{{ person.id }}">{{ person.lastName }}, {{ person.firstName }}</a></li>
-                    {% endfor %}
-                </ul>
+                <a href="/photos/people/">People</a>
             </li>
 
             <!-- Remove temporarly
@@ -64,6 +59,14 @@
                         </div>
                     </li>
                 {% endfor %}
+            <!-- List of People -->
+            {% elif people %}
+                {% for person in people %}
+                    <li>
+                        <a href="/photos/people/{{ person.id }}">{{ person.lastName }}, {{ person.firstName }}</a>
+                    </li>
+                {% endfor %}
+
             <!-- Pictures for a person -->
             {% elif picture_id %}
                 {% for picture in pictures %}

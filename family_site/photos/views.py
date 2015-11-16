@@ -13,12 +13,10 @@ def index(request):
 
     # For the page header
     ocassions = Ocassion.objects.all()
-    people = Person.objects.order_by('lastName', 'firstName')
 
     #return render(request, 'photos/index.html')
     return render_to_response('photos/index.html', {'pictures': pictures,
-                                                    'ocassions': ocassions,
-                                                    'people': people})
+                                                    'ocassions': ocassions})
 
 def ocassion(request, ocassion_id):
     pictures = Picture.objects.filter(ocassion__id = ocassion_id)
@@ -31,7 +29,18 @@ def ocassion(request, ocassion_id):
     return render_to_response('photos/index.html', {'pictures': pictures,
                                                     'ocassions': ocassions,
                                                     'ocassion_id': ocassion_id,
-                                                    'selected_ocassion': selected_ocassion,
+                                                    'selected_ocassion': selected_ocassion})
+
+
+#def people(request, person_id):
+def people(request):
+    #pictures = Picture.objects.filter(people__id = person_id)
+
+    # For the page header
+    ocassions = Ocassion.objects.all()
+    people = Person.objects.order_by('lastName', 'firstName')
+
+    return render_to_response('photos/index.html', {'ocassions': ocassions,
                                                     'people': people})
 
 
@@ -40,13 +49,10 @@ def person(request, person_id):
 
     # For the page header
     ocassions = Ocassion.objects.all()
-    people = Person.objects.order_by('lastName', 'firstName')
 
-    #return render(request, 'photos/index.html')
-    return render_to_response('photos/index.html', {'pictures': pictures,
-                                                    'ocassions': ocassions,
-                                                    'people': people,
-                                                    'person_id': person_id})
+    return render_to_response('photos/index.html', {'ocassions': ocassions,
+                                                    'pictures': pictures})
+
 
 
 

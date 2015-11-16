@@ -7,7 +7,8 @@ from . import views
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^/(?P<ocassion_id>[0-9]+)$', views.ocassion, name='ocassion'),
-    url(r'^/person/(?P<person_id>[0-9]+)$', views.person, name='person'),
+    url(r'^/people/$', views.people, name='people'),
+    url(r'^/people/(?P<person_id>[0-9]+)$', views.person, name='person'),
 ] #+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
