@@ -1,14 +1,18 @@
 from django.db import models
 import os, datetime
 
-loginChoices=[('gmail','Gmail'),
-         ('facebook','Facebook'),
-         ('twitter', 'Twitter')]
-
 # TBD: Should not be hardcoded. Or a better generic ocassion created.
-DEFAULT_OCASSION=1
+DEFAULT_OCASSION = 1
 
-class Person(models.Model):
+class CommonInfo(models.Model):
+    """Contains the fields common to all models"""
+    createDateTime = models.DateTimeField('createDateTime', default=datetime.datetime.utcnow)
+    updatedDateTime = models.DateTimeField('updatedDateTime', default=datetime.datetime.utcnow)
+
+    class Meta:
+        abstract = True
+
+class Person(CommonInfo):
     """Used to associate a person to other things"""
 
     firstName = models.CharField('First Name', max_length=50)
@@ -22,7 +26,7 @@ class Person(models.Model):
     def __unicode__(self):
         return "%s, %s" % (self.lastName, self.firstName)
 
-class Ocassion(models.Model):
+class Ocassion(CommonInfo):
     """Used to store the occations to choose from"""
     linkText = models.CharField('Link Text', max_length=50)
     name = models.CharField('Name', max_length=100)
@@ -32,22 +36,19 @@ class Ocassion(models.Model):
 
     fileLocation = models.CharField('File Location', max_length=30, blank = True)
 
-    # Used to show text in 'admin' screens
-    # TBD: Need to find a better way
     def __unicode__(self):
         return self.name
 
 def get_upload_path(instance, filename):
+    """Gets the Media path to save and retrieve the files from"""
     return os.path.join(instance.ocassion.fileLocation, filename)
 
-class Picture(models.Model):
+class Picture(CommonInfo):
     """Used to store the pictures"""
     title = models.CharField('Title', max_length=100)
     description = models.CharField('Description', max_length=200, blank = True)
 
     people = models.ManyToManyField(Person, blank = True)
-
-    uploadDate = models.DateTimeField('Upload Date', default=datetime.datetime.utcnow)
 
     ocassion = models.ForeignKey(Ocassion, default=DEFAULT_OCASSION)
 
@@ -55,6 +56,7 @@ class Picture(models.Model):
     portrait = models.BooleanField('Is portrait?', default=0) # Default the fields to false
 
     def image_tag(self):
+        """Used to display the picture on the Admin screen"""
         # TBD: Adjust so the Admin page correctly displays photo too (So there is a preview of how it will display on the site).
         return u'<img src="%s" height="200px" width="200px"/>' % self.photo.url
 
