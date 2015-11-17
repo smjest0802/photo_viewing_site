@@ -6,8 +6,8 @@ DEFAULT_OCASSION = 1
 
 class CommonInfo(models.Model):
     """Contains the fields common to all models"""
-    createDateTime = models.DateTimeField('createDateTime', default=datetime.datetime.utcnow)
-    updatedDateTime = models.DateTimeField('updatedDateTime', default=datetime.datetime.utcnow)
+    createDateTime = models.DateTimeField('Create Date Time', default=datetime.datetime.now)
+    updatedDateTime = models.DateTimeField('Updated Date Time', default=datetime.datetime.now)
 
     class Meta:
         abstract = True
@@ -32,7 +32,7 @@ class Ocassion(CommonInfo):
     name = models.CharField('Name', max_length=100)
     description = models.CharField('Description', max_length=200)
 
-    occuredDate = models.DateTimeField('Date', default=datetime.datetime.utcnow)
+    occuredDate = models.DateTimeField('Date Occured?', default=datetime.datetime.now)
 
     fileLocation = models.CharField('File Location', max_length=30, blank = True)
 
@@ -64,9 +64,6 @@ class Picture(CommonInfo):
     image_tag.allow_tags = True
 
     def __unicode__(self):
-        displayStr = "Title: %s\n" % self.title
-        displayStr += "Description: %s\n" % self.description
-
-        return displayStr
+        return "%s <%s>" % (self.title, self.description)
 
 

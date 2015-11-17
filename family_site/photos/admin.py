@@ -1,8 +1,13 @@
 from django.contrib import admin
+import datetime
 
 from .models import Picture, Ocassion, Person
 
 class PictureAdmin(admin.ModelAdmin):
+    def save_model(self, request, obj, form, change):
+        obj.updatedDateTime = datetime.datetime.now()
+        obj.save()
+
     fieldsets = [
         (None,  {'fields': ['title', 'description']}),
         (None,  {'fields': ['ocassion',]}),
@@ -22,6 +27,10 @@ class PictureAdmin(admin.ModelAdmin):
 admin.site.register(Picture, PictureAdmin)
 
 class OcassionAdmin(admin.ModelAdmin):
+    def save_model(self, request, obj, form, change):
+        obj.updatedDateTime = datetime.datetime.now()
+        obj.save()
+
     fieldsets = [
         (None, {'fields': ['name', 'description']}),
         (None, {'fields': ['linkText', 'occuredDate']}),
@@ -36,6 +45,10 @@ class OcassionAdmin(admin.ModelAdmin):
 admin.site.register(Ocassion, OcassionAdmin)
 
 class PersonAdmin(admin.ModelAdmin):
+    def save_model(self, request, obj, form, change):
+        obj.updatedDateTime = datetime.datetime.now()
+        obj.save()
+
     fieldsets = [
         ('Name', {'fields': [('firstName', 'lastName')]}),
         ('Parents', {'fields': [('mother', 'father')]}),
