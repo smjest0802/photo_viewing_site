@@ -35,8 +35,11 @@ $ python /vagrant/family_site/manage.py createsuperuser
 # Determine IP of new Vagrant VM
 $ ifconfig
 
-# Change the `MEDIA_URL` in [settings.py](/family_site/family_site/settings.py) to match the IPAddress/Host
-$ vi /family_site/family_site/settings.py
+# Modify the configuration files to match environment
+$ ls -1 config/*
+config/HOST
+config/MEDIA_ROOT
+config/PORT
 
 # Start the runserver (IP should match from previous step)
 $ python manage.py runserver 10.0.0.11:8000
