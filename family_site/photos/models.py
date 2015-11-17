@@ -8,18 +8,6 @@ loginChoices=[('gmail','Gmail'),
 # TBD: Should not be hardcoded. Or a better generic ocassion created.
 DEFAULT_OCASSION=1
 
-# TBD: May not use this. Need to understand Django's User configuration first.
-class User(models.Model):
-    """Used to track users allowed to access the site"""
-    username = models.CharField(max_length=50)
-    loginchoice = models.CharField(max_length=20)    # TBD: Consider changing to an Integer (Enum)
-
-    firstName = models.CharField(max_length=50)
-    lastName = models.CharField(max_length=50)
-
-    createDate = models.DateTimeField()
-    updateDate = models.DateTimeField()
-
 class Person(models.Model):
     """Used to associate a person to other things"""
 
