@@ -31,10 +31,6 @@ sudo pip install mysql-python
 sudo apt-get install -y libjpeg-dev # Needed to install Pillow on Ubuntu
 sudo pip install pillow # Needed for Django image fields
 
-#Configure
-#echo "Creating Users"
-#sudo useradd -m -p ${default_password} -s /bin/bash family
-
 # MySQL setup for project
 echo "MySQL setup for project"
 mysql -u root -p"${default_password}" -e "CREATE DATABASE family CHARACTER SET utf8"
@@ -42,12 +38,12 @@ mysql -u root -p"${default_password}" -e "create user 'family'@'localhost'"
 mysql -u root -p"${default_password}" -e "set password for 'family'@'localhost' = PASSWORD('${default_password}')"
 mysql -u root -p"${default_password}" -e "grant all on family.* to 'family'"
 
-# Add '.my.cnf' to user family home directory
+# Add '.my.cnf' to vagrant home directory
 echo "Creating '.my.cnf' for user family"
-#cnf_file="/home/family/.my.cnf"
 cnf_file="/home/vagrant/.my.cnf"
 sudo touch $cnf_file
 
+# File created by root, change to be owned by vagrant
 sudo chown vagrant:vagrant $cnf_file
 
 echo "[client]" >> $cnf_file
